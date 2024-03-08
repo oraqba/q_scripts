@@ -78,5 +78,3 @@ undef owner
 undef table_name
 undef index_name
 undef ORACLE_MAINTAINED
-
-2
