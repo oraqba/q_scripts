@@ -39,39 +39,39 @@ WHERE TABLES.OWNER = MODIFICATIONS.TABLE_OWNER
 AND TABLES.TABLE_NAME = MODIFICATIONS.TABLE_NAME
 AND NUM_ROWS > 0
 AND ROUND ( (DELETES + UPDATES + INSERTS) / NUM_ROWS * 100) >= 10
-AND TABLES.OWNER like '&&owner%'
-AND TABLES.TABLE_NAME like '&&table_name%'
+AND TABLES.OWNER like upper('&&owner%')
+AND TABLES.TABLE_NAME like upper('&&table_name%')
 AND TABLES.OWNER in (select username from dba_users where ORACLE_MAINTAINED in ('N','&&ORACLE_MAINTAINED'))
-ORDER BY 1,3 desc
+ORDER BY 1,2 desc
 /
 
 
 prompt 'Table stale stats'
 
-select owner,table_name,partition_name,num_rows,last_analyzed,stale_stats
+select owner,table_name,partition_name,num_rows,last_analyzed,decode(stale_stats,'NO','NO',NULL, 'NO STATS', 'YES') stale_stats
 from dba_tab_statistics
-where stale_stats='YES'
-and OWNER like '&&owner%'
-AND TABLE_NAME like '&&table_name%'
+where (stale_stats='YES' or stale_stats is null)
+and OWNER like upper('&&owner%')
+AND TABLE_NAME like upper('&&table_name%')
 AND OWNER in (select username from dba_users where ORACLE_MAINTAINED in ('N','&&ORACLE_MAINTAINED'))
 order by owner,table_name
 /
 
 prompt 'Index stale stats'
 
-select table_owner,table_name,index_name,partition_name,num_rows,last_analyzed,stale_stats
+select table_owner,table_name,index_name,partition_name,num_rows,last_analyzed,decode(stale_stats,'NO','NO',NULL, 'NO STATS', 'YES') stale_stats
 from dba_ind_statistics
-where stale_stats='YES'
-and TABLE_OWNER like '&&owner%'
-AND TABLE_NAME like '&&table_name%'
-AND INDEX_NAME like '&&index_name%'
+where (stale_stats='YES' or stale_stats is null)
+and TABLE_OWNER like upper('&&owner%')
+AND TABLE_NAME like upper('&&table_name%')
+AND INDEX_NAME like upper('&&index_name%')
 AND TABLE_OWNER in (select username from dba_users where ORACLE_MAINTAINED in ('N','&&ORACLE_MAINTAINED'))
 order by owner,table_name,index_name
 /
 
 col gather_stats for a100
 select distinct 'exec DBMS_STATS.GATHER_SCHEMA_STATS('''||owner||''',options =>''GATHER AUTO'',degree=>4);' GATHER_STATS from dba_tab_statistics
-where stale_stats='YES' 
+where (stale_stats='YES' or stale_stats is null)
 AND OWNER in (select username from dba_users where ORACLE_MAINTAINED in ('N','&&ORACLE_MAINTAINED'))
 order by 1;
 
