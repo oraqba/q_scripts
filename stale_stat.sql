@@ -1,3 +1,4 @@
+exec DBMS_STATS.FLUSH_DATABASE_MONITORING_INFO();
 accept owner -
        prompt 'Enter owner name : ' -
        default ''
