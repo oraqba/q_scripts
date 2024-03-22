@@ -2,18 +2,16 @@ col sql_id for a30
 col sql_text for a100
 SET LINESIZE 1000
 
-accept PATH -
-       prompt 'Provide path ([Current directory]) : ' -
-       default ''
-
-prompt 'Last executed query :'
+prompt Last executed query :
 column def_sql_id new_val def_sql_id
 select distinct nvl(PREV_SQL_ID,'no_prev_sql_id') def_sql_id,sql_text from v$session,v$sql where PREV_SQL_ID=v$sql.sql_id and sid in (select distinct sid from v$mystat);
 
 accept sql_id -
        prompt 'Enter sql_id ([last_executed_query]): ' -
        default '&def_sql_id'
-
+accept PATH -
+       prompt 'Provide path ([Current directory]) : ' -
+       default ''   
 
 --TXT--
 SET LONG 1000000
