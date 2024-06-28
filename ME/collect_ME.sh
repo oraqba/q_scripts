@@ -4,7 +4,7 @@
 export ORACLE_SID=emrep
 export ORAENV_ASK=NO;. oraenv > /dev/null;
 export SPOOLFILE=/tmp/emcli_collect_ME_tmp.sql
-$ORACLE_HOME/bin/sqlplus -s sysman/Nsb0326TLP9 <<EOF
+$ORACLE_HOME/bin/sqlplus -s sysman/<SYSMANPASS> <<EOF
 set lines 300 pages 0
 set feed 0
 set head off
