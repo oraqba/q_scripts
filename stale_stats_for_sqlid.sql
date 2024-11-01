@@ -49,3 +49,22 @@ and    s.owner      = i.object_owner
 and    s.partition_name is null
 and    s.subpartition_name is null
 order by i.object_owner, i.object_name;
+
+with plan_tables as (
+select distinct object_name,object_owner, object_type
+from v$sql_plan
+where object_type like 'TABLE%'
+and   sql_id      = '&sql_id')
+select --t.object_owner owner,
+       --t.object_name table_name,
+       --t.object_type object_type,
+       --decode(stale_stats,'NO','OK',NULL, 'NO STATS!', 'STALE!') staleness,
+'exec DBMS_STATS.GATHER_TABLE_STATS('''||t.object_owner||''','''||''||t.object_name||''',cascade =>TRUE,degree=>4);' GATHER_STATS
+from   dba_tab_statistics s,
+       plan_tables        t
+where  s.table_name = t.object_name
+and    s.owner      = t.object_owner
+and    s.partition_name is null
+and    s.subpartition_name is null
+order by t.object_owner, t.object_name;
+
