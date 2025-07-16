@@ -1,0 +1,954 @@
+update EMREP to 19.25!!!!
+###Author: jakub.szepietowski.sp@dlh.de, jakub@nsb-software.de###
+###2025-06-16
+
+Critical Patch Update (CPU) Program Jan 2025 Patch Availability Document (EM-only) (Doc ID 3056561.1)
+Enterprise Manager 13.5 Main Release Update List (Includes Plug-ins) (Doc ID 2760230.2)
+EM 13.5: How to Use the Latest Certified JDK 8 Update with OMS 13.5 (Doc ID 2776765.1)
+EM 13.5: How to Use the Latest Certified JDK 8 Update with 13.5 Agents (Doc ID 2777094.1)
+####patching####Master Note for Enterprise Manager Proactive Patch Program (Doc ID 822485.1)
+Enterprise Manager Cloud Control Base Platform Monthly Release Update (RU) 19 (Doc ID 2996599.1)
+
+sys Na4LHdgZ8
+weblogic nodemanager = Nsb0326TLP9
+sysman = TnG3PTJY#a46hT
+registration pass oracle123!
+
+OMS:
+cd /media/sf_D_DRIVE/OEM13.5/
+./wget.sh p19999993_135000_Generic.zip p37439429_135000_Generic.zip p37878436_135000_Generic.zip
+
+Agent
+cd /media/sf_D_DRIVE/OEM13.5/
+./wget.sh p33355570_135000_Generic.zip p37439438_135000_Generic.zip p37643820_180451_Linux-x86-64.zip p37714186_122140_Generic.zip   p28186730_1394219_Generic.zip
+
+OMS:
+OMSpatcher:
+13.5: How To Upgrade Enterprise Manager 13.5 Cloud Control OMSPatcher Utility to the Latest Version (Doc ID 2809842.1)
+1) p19999993_135000_Generic.zip Patch 19999993: OMSPatcher patch of version 13.9.5.25.0 for Enterprise Manager Cloud Control 13.5.0.0.0
+ 
+OMS RU26:
+2) p37439429_135000_Generic.zip  Patch 37439429: Oracle Enterprise Manager 13c Release 5 Update 26 ( 13.5.0.26 ) for Oracle Management Service
+ 
+Security+Java:
++EM 13.5: How to Use the Latest Certified JDK 8 Update with OMS 13.5 (Doc ID 2776765.1)
+3) p37878436_135000_Generic.zip  Patch 37878436: Oracle Enterprise Manager 13c Release 5 Holistic Patch for Oracle Management Service - April 2025
+
+Agent:
+AGENTpatcher: 
++13.5: How to Upgrade AgentPatcher to the Latest Version (Doc ID 2810322.1)
+13.9.5.10.0
+1) p33355570_135000_Generic.zip
+
+AGENT RU26:
+2) p37439438_135000_Generic.zip Patch 37439438: Oracle Enterprise Manager 13c Release 5 Update 26 ( 13.5.0.26 ) for Oracle Management Agent
+
+Security+Java
+3) p37643820_180451_Linux-x86-64.zip   Patch 37643820: Oracle JDK 8 Update 451 
+4) p28186730_1394219_Generic.zip  Patch 28186730: OPATCH 13.9.4.2.19 FOR EM 13.5 AND FMW/WLS 12.2.1.4.0, 14.1.1.0.0, 14.1.2.0.0
+5) p37714186_122140_Generic.zip Patch 37714186: WLS PATCH SET UPDATE 12.2.1.4.250317
+
+before:
+37562293;EM Stack Patch Bundle 13.5.0.0.0(ID:250206.050212) (Patch 37562062)
+37453807;WLS PATCH SET UPDATE 12.2.1.4.250107
+37443574;OHS (NATIVE) DB19C BUNDLE PATCH 12.2.1.4.250103
+37374672;FMW Thirdparty Bundle Patch 12.2.1.4.241210
+37297691;OSS 19C BUNDLE PATCH 12.2.1.4.241119
+37284722;WebCenter Core Bundle Patch 12.2.1.4.241114
+37258699;JDBC19.25 BUNDLE PATCH 12.2.1.4.241107
+37202255;RDA release 25.1-2025121 for OFM 12.2.1.4 SPB
+36925662;ORANJNI19.DLL AND LIBNJNI19.SO IS COREDUMPING AND CRASHING THE JVM IN WINDOWS AND AIX RESPECTIVELY
+1221424;Coherence Cumulative Patch 12.2.1.4.24
+37202254;DATABASE RELEASE UPDATE 19.25.0.0.0 FOR FMW DBCLIENT (37202254)
+37051110;Oracle Enterprise Manager for Systems Infrastructure 13c Release 5 Plug-in Update 25 (13.5.1.25) for Oracle Management Service
+37051095;Oracle Enterprise Manager for Exadata 13c Release 5 Plug-in Update 25 (13.5.1.25) for Oracle Management Service
+37051029;Oracle Enterprise Manager for Oracle Database 13c Release 5 Plug-in Update 25 (13.5.1.25) for Oracle Management Service
+37051018;Oracle Enterprise Manager for Fusion Middleware 13c Release 5 Plug-in Update 25 (13.5.1.25) for Oracle Management Service
+37051009;Oracle Enterprise Manager 13c Release 5 Platform Update 25 (13.5.0.25) for Oracle Management Service
+37074199;Copy ldapjclnt19.jar into Instance home
+37035947;OWSM BUNDLE PATCH 12.2.1.4.240908
+37028738;ADF BUNDLE PATCH 12.2.1.4.240905
+36789759;FMW PLATFORM BUNDLE PATCH 12.2.1.4.240812
+36910011;One-off
+36752903;Oracle Enterprise Manager for Cloud Framework 13c Release 5 Plug-in Update 24 (13.5.1.24) for Oracle Management Service
+36316422;OPSS Bundle Patch 12.2.1.4.240220
+35965629;ADR FOR WEBLOGIC SERVER 12.2.1.4.0 CPU JAN 2024
+34809489;One-off
+34430509;Oracle Enterprise Manager for Virtualization 13c Release 5 Plug-in Update 10 (13.5.1.10) for Oracle Management Service
+34065178;One-off
+33672721;fix for bug 33672721
+30152128;One-off
+
+
+after:
+
+
+##############################
+####OMSPatcher patching#######
+##############################
+13.5: How To Upgrade Enterprise Manager 13.5 Cloud Control OMSPatcher Utility to the Latest Version (Doc ID 2809842.1)
+
+export ORACLE_HOME=/u01/app/oracle/middleware
+$ORACLE_HOME/OMSPatcher/omspatcher version
+OMSPatcher Version: 13.9.5.24.0
+OPlan Version: 12.2.0.1.16
+OsysModel build: Tue Apr 28 18:16:31 PDT 2020
+
+rm -fr $ORACLE_HOME/OMSPatcher 
+unzip -oq /media/sf_D_DRIVE/OEM13.5/202506/p19999993_135000_Generic.zip -d $ORACLE_HOME
+
+$ORACLE_HOME/OMSPatcher/omspatcher version
+OMSPatcher Version: 13.9.5.25.0
+OPlan Version: 12.2.0.1.16
+OsysModel build: Tue Apr 28 18:16:31 PDT 2020
+
+###########################
+####OMS RU26patching#######
+###########################
+sys Na4LHdgZ8
+weblogic nodemanager  = Nsb0326TLP9
+sysman = TnG3PTJY#a46hT
+registration pass oracle123!
+
+#Creating a Property File
+mkdir /tmp/patch
+export ORACLE_HOME=/u01/app/oracle/middleware
+export PATCH_HOME=/tmp/patch
+$ORACLE_HOME/OMSPatcher/wlskeys/createkeys.sh -oh $ORACLE_HOME -location $PATCH_HOME
+
+[oracle@oem13 tmp]$ $ORACLE_HOME/OMSPatcher/wlskeys/createkeys.sh -oh $ORACLE_HOME -location $PATCH_HOME
+The oraclehome passed is valid.
+The wls url is t3s://oem13.localdomain:7102
+
+Please enter weblogic admin server username : weblogic
+
+Please enter weblogic admin server password : 
+The cfgFile is /tmp/patch/config
+The keyFile is /tmp/patch/key
+
+Initializing WebLogic Scripting Tool (WLST) ...
+
+Welcome to WebLogic Server Administration Scripting Shell
+
+Type help() for help on available commands
+
+Mon Jun 16 13:06:04 CEST 2025
+Storing WLS User configuration
+Admin url: t3s://oem13.localdomain:7102
+Admin Config File: /tmp/patch/config
+Key File : /tmp/patch/key
+Please enter weblogic admin server username :
+Enter Admin user's password: 
+Mon Jun 16 13:06:04 CEST 2025
+Connecting to AdminServer
+Connecting to t3s://oem13.localdomain:7102 with userid weblogic ...
+<Jun 16, 2025 1:06:05 PM CEST> <Info> <Security> <BEA-090905> <Disabling the CryptoJ JCE Provider self-integrity check for better startup performance. To enable this check, specify -Dweblogic.security.allowCryptoJDefaultJCEVerification=true.> 
+<Jun 16, 2025 1:06:06 PM CEST> <Info> <Security> <BEA-090906> <Changing the default Random Number Generator in RSA CryptoJ from ECDRBG128 to HMACDRBG. To disable this change, specify -Dweblogic.security.allowCryptoJDefaultPRNG=true.> 
+<Jun 16, 2025 1:06:06 PM CEST> <Info> <Security> <BEA-090908> <Using the default WebLogic SSL Hostname Verifier implementation.> 
+Successfully connected to Admin Server "EMGC_ADMINSERVER" that belongs to domain "GCDomain".
+
+Creating the key file can reduce the security of your system if it is not kept in a secured location after it is created. Creating new key...
+The username and password that were used for this WebLogic Server connection are stored in /tmp/patch/config and /tmp/patch/key.
+Disconnected from weblogic server: EMGC_ADMINSERVER
+******************  **********************88
+0
+User configuration file created: /tmp/patch/config
+User key file created: /tmp/patch/key
+'createkeys' succeeded.
+
+[oracle@oem13 ~]$ $ORACLE_HOME/bin/emctl status oms -details
+Oracle Enterprise Manager Cloud Control 13c Release 5  
+Copyright (c) 1996, 2021 Oracle Corporation.  All rights reserved.
+Console Server Host        : oem13.localdomain
+HTTP Console Port          : 7788
+HTTPS Console Port         : 7802
+HTTP Upload Port           : 4889
+HTTPS Upload Port          : 4903
+EM Instance Home           : /u01/app/oracle/gc_inst/em/EMGC_OMS1
+OMS Log Directory Location : /u01/app/oracle/gc_inst/em/EMGC_OMS1/sysman/log
+OMS is not configured with SLB or virtual hostname
+Agent Upload is locked.
+OMS Console is locked.
+Active CA ID: 1
+Console URL: https://oem13.localdomain:7802/em
+Upload URL: https://oem13.localdomain:4903/empbs/upload
+
+WLS Domain Information
+Domain Name            : GCDomain
+Admin Server Host      : oem13.localdomain
+Admin Server HTTPS Port: 7102
+Admin Server is RUNNING
+
+Oracle Management Server Information
+Managed Server Instance Name: EMGC_OMS1
+Oracle Management Server Instance Host: oem13.localdomain
+WebTier is Up
+Oracle Management Server is Up
+JVMD Engine is Up
+
+vi /tmp/patch/property.file
+AdminServerURL=t3s://oem13.localdomain:7102
+AdminConfigFile=/tmp/patch/config
+AdminKeyFile=/tmp/patch/key
+Sys_pwd=Na4LHdgZ8
+
+export ORACLE_HOME=/u01/app/oracle/middleware
+export PATCH_HOME=/tmp/patch
+unzip -oq /media/sf_D_DRIVE/OEM13.5/202506/p37439429_135000_Generic.zip -d $PATCH_HOME
+
+cd $PATCH_HOME/37439429
+$ORACLE_HOME/OMSPatcher/omspatcher apply -analyze -property_file /tmp/patch/property.file
+
+$ORACLE_HOME/bin/emctl stop oms	
+$ORACLE_HOME/OMSPatcher/omspatcher apply -property_file /tmp/patch/property.file -silent
+
+$ORACLE_HOME/bin/emctl status oms -details
+$ORACLE_HOME/OPatch/opatch lspatches 
+
+---log analyze---
+[oracle@oem13 OEM13.5]$ cd $PATCH_HOME/37439429
+[oracle@oem13 37439429]$ $ORACLE_HOME/OMSPatcher/omspatcher apply -analyze -property_file /tmp/patch/property.file
+OMSPatcher Automation Tool
+Copyright (c) 2017, Oracle Corporation.  All rights reserved.
+
+
+OMSPatcher version : 13.9.5.25.0
+OUI version        : 13.9.4.0.0
+Running from       : /u01/app/oracle/middleware
+Log file location  : /u01/app/oracle/middleware/cfgtoollogs/omspatcher/opatch2025-06-16_13-10-24PM_1.log
+
+OMSPatcher log file: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/37439429/omspatcher_2025-06-16_13-13-53PM_analyze.log
+
+
+Enter DB user name : sys
+Enter 'sys' password : 
+Checking if current repository database is a supported version
+Current repository database version is supported
+
+
+Prereq "checkComponents" for patch 37437845 passed.
+
+Prereq "checkComponents" for patch 37437862 passed.
+
+Prereq "checkComponents" for patch 37437919 passed.
+
+Configuration Validation: Success
+
+
+Running apply prerequisite checks for sub-patch(es) "37437862,37437845,37437919" and Oracle Home "/u01/app/oracle/middleware"...
+Sub-patch(es) "37437862,37437845,37437919" are successfully analyzed for Oracle Home "/u01/app/oracle/middleware"
+
+
+Complete Summary
+================
+
+
+All log file names referenced below can be accessed from the directory "/u01/app/oracle/middleware/cfgtoollogs/omspatcher/2025-06-16_13-10-24PM_SystemPatch_37439429_1"
+
+Prerequisites analysis summary:
+-------------------------------
+
+The following sub-patch(es) are applicable:
+
+             Featureset                  Sub-patches                                                       Log file
+             ----------                  -----------                                                       --------
+  oracle.sysman.top.oms   37437862,37437845,37437919   37437862,37437845,37437919_opatch2025-06-16_13-15-12PM_1.log
+
+
+The following sub-patches are not needed by any component installed in the OMS system:
+35582217,36752930,37437875,35854914,36752809,36329046,37437927,36752891
+
+
+The following sub-patches are already applied to the OMS system:
+37051110,37051018,36752903,34430509
+
+
+
+--------------------------------------------------------------------------------
+The following warnings have occurred during OPatch execution:
+1)  Sub-patch "37051110" skipped as it is already been applied to the "OMS" system.
+2)  Sub-patch "37051018" skipped as it is already been applied to the "OMS" system.
+3)  Sub-patch "36752903" skipped as it is already been applied to the "OMS" system.
+4)  Sub-patch "34430509" skipped as it is already been applied to the "OMS" system.
+--------------------------------------------------------------------------------
+Log file location: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/37439429/omspatcher_2025-06-16_13-13-53PM_analyze.log
+
+OMSPatcher succeeded.
+
+---log patching---
+[oracle@oem13 37439429]$ $ORACLE_HOME/bin/emctl stop oms
+Oracle Enterprise Manager Cloud Control 13c Release 5  
+Copyright (c) 1996, 2021 Oracle Corporation.  All rights reserved.
+Stopping Oracle Management Server...
+Oracle Management Server Successfully Stopped
+Oracle Management Server is Down
+JVMD Engine is Down
+[oracle@oem13 37439429]$ $ORACLE_HOME/OMSPatcher/omspatcher apply -property_file /tmp/patch/property.file -silent
+OMSPatcher Automation Tool
+Copyright (c) 2017, Oracle Corporation.  All rights reserved.
+
+
+OMSPatcher version : 13.9.5.25.0
+OUI version        : 13.9.4.0.0
+Running from       : /u01/app/oracle/middleware
+Log file location  : /u01/app/oracle/middleware/cfgtoollogs/omspatcher/opatch2025-06-16_13-46-27PM_1.log
+
+OMSPatcher log file: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/37439429/omspatcher_2025-06-16_13-48-48PM_apply.log
+
+
+Checking if current repository database is a supported version
+Current repository database version is supported
+
+
+Prereq "checkComponents" for patch 37437845 passed.
+
+Prereq "checkComponents" for patch 37437862 passed.
+
+Prereq "checkComponents" for patch 37437919 passed.
+
+Configuration Validation: Success
+
+
+Running apply prerequisite checks for sub-patch(es) "37437862,37437845,37437919" and Oracle Home "/u01/app/oracle/middleware"...
+Sub-patch(es) "37437862,37437845,37437919" are successfully analyzed for Oracle Home "/u01/app/oracle/middleware"
+
+To continue, OMSPatcher will do the following:
+[Patch and deploy artifacts]   : Apply sub-patch(es) [ 37437845 37437862 37437919 ]
+                                 Apply RCU artifact with patch "/u01/app/oracle/middleware/.omspatcher_storage/37437845_Apr_28_2025_02_38_28/original_patch";
+                                 Apply RCU artifact with patch "/u01/app/oracle/middleware/.omspatcher_storage/37437862_Apr_28_2025_03_42_34/original_patch";
+                                 Apply RCU artifact with patch "/u01/app/oracle/middleware/.omspatcher_storage/37437919_Apr_28_2025_03_43_17/original_patch";
+                                 Register MRS artifact "targetType";
+                                 Register MRS artifact "default_collection";
+                                 Register MRS artifact "jobTypes";
+                                 Register MRS artifact "systemStencil";
+                                 Register MRS artifact "procedures";
+                                 Register MRS artifact "swlib";
+                                 Register MRS artifact "namedQuery";
+                                 Register MRS artifact "storeTargetType"
+
+
+Do you want to proceed? [y|n]
+Y (auto-answered by -silent)
+User Responded with: Y
+Stopping the OMS.....
+Please monitor log file: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/2025-06-16_14-02-35PM_SystemPatch_37439429_9/stop_oms_2025-06-16_14-02-35PM.log
+
+
+Applying sub-patch(es) "37437845,37437862,37437919"
+Please monitor log file: /u01/app/oracle/middleware/cfgtoollogs/opatch/opatch2025-06-16_13-48-56PM_1.log
+
+Starting the ADMIN .....
+Please monitor log file: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/2025-06-16_14-14-32PM_SystemPatch_37439429_12/start_admin_2025-06-16_14-14-32PM.log
+
+DB user 'sys' is allowed to perform startOP patching operation.
+
+Updating repository with RCU reference file "/u01/app/oracle/middleware/.omspatcher_storage/37437845_Apr_28_2025_02_38_28/original_patch"
+
+Updating repository with RCU reference file "/u01/app/oracle/middleware/.omspatcher_storage/37437862_Apr_28_2025_03_42_34/original_patch" for plugin home "/u01/app/oracle/middleware/plugins/oracle.sysman.db.oms.plugin_13.5.1.0.0"
+
+Updating repository with RCU reference file "/u01/app/oracle/middleware/.omspatcher_storage/37437919_Apr_28_2025_03_43_17/original_patch" for plugin home "/u01/app/oracle/middleware/plugins/oracle.sysman.xa.oms.plugin_13.5.1.0.0"
+
+Registering service "targetType" with register file "/u01/app/oracle/middleware/plugins/oracle.sysman.db.oms.plugin_13.5.1.0.0/patched_metadata/13.5.1.0.0/targetType/37437862/oracle_database.xml" for plugin id as "oracle.sysman.db"...
+Please monitor log file: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/2025-06-16_14-14-32PM_SystemPatch_37439429_12/emctl_register_targetType_2025-06-16_14-23-15PM.log
+
+
+Registering service "default_collection" with register file "/u01/app/oracle/middleware/plugins/oracle.sysman.db.oms.plugin_13.5.1.0.0/patched_metadata/13.5.1.0.0/default_collection/37437862/oracle_database.xml" for plugin id as "oracle.sysman.db"...
+Please monitor log file: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/2025-06-16_14-14-32PM_SystemPatch_37439429_12/emctl_register_default_collection_2025-06-16_14-25-28PM.log
+
+
+Registering service "jobTypes" with register file "/u01/app/oracle/middleware/sysman/metadata/jobTypes/AgentUpdateJob.xml" for plugin id as "core"...
+Please monitor log file: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/2025-06-16_14-14-32PM_SystemPatch_37439429_12/emctl_register_jobTypes_2025-06-16_14-25-58PM.log
+
+
+Registering service "jobTypes" with register file "/u01/app/oracle/middleware/plugins/oracle.sysman.xa.oms.plugin_13.5.1.0.0/metadata/jobTypes/ExaFleetMembersRefresh.xml" for plugin id as "oracle.sysman.xa"...
+Please monitor log file: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/2025-06-16_14-14-32PM_SystemPatch_37439429_12/emctl_register_jobTypes_2025-06-16_14-26-08PM.log
+
+
+Registering service "systemStencil" with register file "/u01/app/oracle/middleware/plugins/oracle.sysman.db.oms.plugin_13.5.1.0.0/patched_metadata/13.5.1.0.0/systemStencil/37437862/rac_database.xml" for plugin id as "oracle.sysman.db"...
+Please monitor log file: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/2025-06-16_14-14-32PM_SystemPatch_37439429_12/emctl_register_systemStencil_2025-06-16_14-26-18PM.log
+
+
+Registering service "procedures" with register file "/u01/app/oracle/middleware/plugins/oracle.sysman.db.oms.plugin_13.5.1.0.0/metadata/procedures/CleanupSihaSidb.xml" for plugin id as "oracle.sysman.db"...
+Please monitor log file: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/2025-06-16_14-14-32PM_SystemPatch_37439429_12/emctl_register_procedures_2025-06-16_14-26-26PM.log
+
+
+Registering service "swlib" with register file "/u01/app/oracle/middleware/plugins/oracle.sysman.db.oms.plugin_13.5.1.0.0/metadata/swlib/dbprovision/dbprov" for plugin id as "oracle.sysman.db"...
+Please monitor log file: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/2025-06-16_14-14-32PM_SystemPatch_37439429_12/emctl_register_swlib_2025-06-16_14-26-37PM.log
+
+
+Registering service "swlib" with register file "/u01/app/oracle/middleware/plugins/oracle.sysman.xa.oms.plugin_13.5.1.0.0/metadata/swlib/analytics" for plugin id as "oracle.sysman.xa"...
+Please monitor log file: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/2025-06-16_14-14-32PM_SystemPatch_37439429_12/emctl_register_swlib_2025-06-16_14-26-52PM.log
+
+
+Registering service "namedQuery" with register file "/u01/app/oracle/middleware/plugins/oracle.sysman.xa.oms.plugin_13.5.1.0.0/metadata/namedQuery/ahf_management_named_query.xml" for plugin id as "oracle.sysman.xa"...
+Please monitor log file: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/2025-06-16_14-14-32PM_SystemPatch_37439429_12/emctl_register_namedQuery_2025-06-16_14-27-02PM.log
+
+
+Registering service "storeTargetType" with register file "/u01/app/oracle/middleware/plugins/oracle.sysman.db.oms.plugin_13.5.1.0.0/patched_metadata/13.5.1.0.0/targetType/37437862/oracle_database.xml" for plugin id as "oracle.sysman.db"...
+Please monitor log file: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/2025-06-16_14-14-32PM_SystemPatch_37439429_12/emctl_register_storeTargetType_2025-06-16_14-27-11PM.log
+
+The job_queue_processes parameter is set to 0 in the repository database. Resetting the job_queue_processes parameter to default value 50 in the repository database to start the OMS. If 50 is not your default value for the job_queue_processes parameter, you should reset it to the preferred value post OMS patching.
+DB user 'sys' is allowed to perform endOP patching operation.
+Starting the oms
+Please monitor log file: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/2025-06-16_14-28-35PM_SystemPatch_37439429_32/start_oms_2025-06-16_14-28-35PM.log
+
+
+Complete Summary
+================
+
+
+All log file names referenced below can be accessed from the directory "/u01/app/oracle/middleware/cfgtoollogs/omspatcher/2025-06-16_14-28-35PM_SystemPatch_37439429_32"
+
+Patching summary:
+-----------------
+
+Binaries of the following sub-patch(es) have been applied successfully:
+
+                        Featureset                  Sub-patches                                                       Log file
+                        ----------                  -----------                                                       --------
+  oracle.sysman.top.oms_13.5.0.0.0   37437845,37437862,37437919   37437845,37437862,37437919_opatch2025-06-16_13-48-56PM_1.log
+
+
+The following sub-patches are not needed by any component installed in the OMS system:
+35582217,36752930,37437875,35854914,36752809,36329046,37437927,36752891
+
+
+The following sub-patches are already applied to the OMS system:
+37051110,37051018,36752903,34430509
+
+Deployment summary:
+-------------------
+
+The following artifact(s) have been successfully deployed:
+
+               Artifacts                                                      Log file
+               ---------                                                      --------
+                     SQL       rcu_applypatch_original_patch_2025-06-16_14-16-34PM.log
+                     SQL       rcu_applypatch_original_patch_2025-06-16_14-21-07PM.log
+                     SQL       rcu_applypatch_original_patch_2025-06-16_14-22-19PM.log
+          MRS-targetType           emctl_register_targetType_2025-06-16_14-23-15PM.log
+  MRS-default_collection   emctl_register_default_collection_2025-06-16_14-25-28PM.log
+            MRS-jobTypes             emctl_register_jobTypes_2025-06-16_14-25-58PM.log
+            MRS-jobTypes             emctl_register_jobTypes_2025-06-16_14-26-08PM.log
+       MRS-systemStencil        emctl_register_systemStencil_2025-06-16_14-26-18PM.log
+          MRS-procedures           emctl_register_procedures_2025-06-16_14-26-26PM.log
+               MRS-swlib                emctl_register_swlib_2025-06-16_14-26-37PM.log
+               MRS-swlib                emctl_register_swlib_2025-06-16_14-26-52PM.log
+          MRS-namedQuery           emctl_register_namedQuery_2025-06-16_14-27-02PM.log
+     MRS-storeTargetType      emctl_register_storeTargetType_2025-06-16_14-27-11PM.log
+
+
+--------------------------------------------------------------------------------
+The following warnings have occurred during OPatch execution:
+1)  Sub-patch "37051110" skipped as it is already been applied to the "OMS" system.
+2)  Sub-patch "37051018" skipped as it is already been applied to the "OMS" system.
+3)  Sub-patch "36752903" skipped as it is already been applied to the "OMS" system.
+4)  Sub-patch "34430509" skipped as it is already been applied to the "OMS" system.
+--------------------------------------------------------------------------------
+Log file location: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/37439429/omspatcher_2025-06-16_13-48-48PM_apply.log
+
+OMSPatcher succeeded.
+[oracle@oem13 37439429]$ $ORACLE_HOME/bin/emctl status oms -details
+Oracle Enterprise Manager Cloud Control 13c Release 5  
+Copyright (c) 1996, 2021 Oracle Corporation.  All rights reserved.
+Console Server Host        : oem13.localdomain
+HTTP Console Port          : 7788
+HTTPS Console Port         : 7802
+HTTP Upload Port           : 4889
+HTTPS Upload Port          : 4903
+EM Instance Home           : /u01/app/oracle/gc_inst/em/EMGC_OMS1
+OMS Log Directory Location : /u01/app/oracle/gc_inst/em/EMGC_OMS1/sysman/log
+OMS is not configured with SLB or virtual hostname
+Agent Upload is locked.
+OMS Console is locked.
+Active CA ID: 1
+Console URL: https://oem13.localdomain:7802/em
+Upload URL: https://oem13.localdomain:4903/empbs/upload
+
+WLS Domain Information
+Domain Name            : GCDomain
+Admin Server Host      : oem13.localdomain
+Admin Server HTTPS Port: 7102
+Admin Server is RUNNING
+
+Oracle Management Server Information
+Managed Server Instance Name: EMGC_OMS1
+Oracle Management Server Instance Host: oem13.localdomain
+WebTier is Up
+Oracle Management Server is Up
+JVMD Engine is Up
+[oracle@oem13 37439429]$ $ORACLE_HOME/OPatch/opatch lspatches 
+37437919;Oracle Enterprise Manager for Exadata 13c Release 5 Plug-in Update 26 (13.5.1.26) for Oracle Management Service
+37437862;Oracle Enterprise Manager for Oracle Database 13c Release 5 Plug-in Update 26 (13.5.1.26) for Oracle Management Service
+37437845;Oracle Enterprise Manager 13c Release 5 Platform Update 26 (13.5.0.26) for Oracle Management Service
+37562293;EM Stack Patch Bundle 13.5.0.0.0(ID:250206.050212) (Patch 37562062)
+37453807;WLS PATCH SET UPDATE 12.2.1.4.250107
+37443574;OHS (NATIVE) DB19C BUNDLE PATCH 12.2.1.4.250103
+37374672;FMW Thirdparty Bundle Patch 12.2.1.4.241210
+37297691;OSS 19C BUNDLE PATCH 12.2.1.4.241119
+37284722;WebCenter Core Bundle Patch 12.2.1.4.241114
+37258699;JDBC19.25 BUNDLE PATCH 12.2.1.4.241107
+37202255;RDA release 25.1-2025121 for OFM 12.2.1.4 SPB
+36925662;ORANJNI19.DLL AND LIBNJNI19.SO IS COREDUMPING AND CRASHING THE JVM IN WINDOWS AND AIX RESPECTIVELY
+1221424;Coherence Cumulative Patch 12.2.1.4.24
+37202254;DATABASE RELEASE UPDATE 19.25.0.0.0 FOR FMW DBCLIENT (37202254)
+37051110;Oracle Enterprise Manager for Systems Infrastructure 13c Release 5 Plug-in Update 25 (13.5.1.25) for Oracle Management Service
+37051018;Oracle Enterprise Manager for Fusion Middleware 13c Release 5 Plug-in Update 25 (13.5.1.25) for Oracle Management Service
+37074199;Copy ldapjclnt19.jar into Instance home
+37035947;OWSM BUNDLE PATCH 12.2.1.4.240908
+37028738;ADF BUNDLE PATCH 12.2.1.4.240905
+36789759;FMW PLATFORM BUNDLE PATCH 12.2.1.4.240812
+36910011;One-off
+36752903;Oracle Enterprise Manager for Cloud Framework 13c Release 5 Plug-in Update 24 (13.5.1.24) for Oracle Management Service
+36316422;OPSS Bundle Patch 12.2.1.4.240220
+35965629;ADR FOR WEBLOGIC SERVER 12.2.1.4.0 CPU JAN 2024
+34809489;One-off
+34430509;Oracle Enterprise Manager for Virtualization 13c Release 5 Plug-in Update 10 (13.5.1.10) for Oracle Management Service
+34065178;One-off
+33672721;fix for bug 33672721
+30152128;One-off
+
+OPatch succeeded.
+	
+###########################
+######Security+Java########
+###########################
+
+Security+Java:
++EM 13.5: How to Use the Latest Certified JDK 8 Update with OMS 13.5 (Doc ID 2776765.1)
+p37878436_135000_Generic.zip  Patch 37878436: Oracle Enterprise Manager 13c Release 5 Holistic Patch for Oracle Management Service - April 2025
+
+mkdir /media/sf_D_DRIVE/patch_tmp
+
+. oraenv
+oms
+
+export ORACLE_HOME=/u01/app/oracle/middleware
+export PATCH_HOME=/media/sf_D_DRIVE/patch_tmp
+unzip -oq /media/sf_D_DRIVE/OEM13.5/202506/p37878436_135000_Generic.zip -d $PATCH_HOME
+
+$ORACLE_HOME/bin/emctl stop oms -all
+$ORACLE_HOME/bin/emctl start oms -admin_only
+
+$ORACLE_HOME/OPatch/opatch rollback -analyze -id 36925662
+$ORACLE_HOME/OPatch/opatch rollback -id 36925662 -silent
+
+
+cd $PATCH_HOME/37878436
+$ORACLE_HOME/OMSPatcher/omspatcher apply -analyze /media/sf_D_DRIVE/patch_tmp/37878436 -spb_patch -property_file /tmp/patch/property.file -silent
+$ORACLE_HOME/OMSPatcher/omspatcher apply /media/sf_D_DRIVE/patch_tmp/37878436 -spb_patch -property_file /tmp/patch/property.file -silent
+$ORACLE_HOME/bin/emctl status oms -details
+$ORACLE_HOME/OPatch/opatch lspatches 
+
+---log patching ----
+[oracle@oem13 ~]$ export ORACLE_HOME=/u01/app/oracle/middleware
+[oracle@oem13 ~]$ export PATCH_HOME=/media/sf_D_DRIVE/patch_tmp
+[oracle@oem13 ~]$ unzip -oq /media/sf_D_DRIVE/OEM13.5/202506/p37878436_135000_Generic.zip -d $PATCH_HOME
+[oracle@oem13 ~]$ export ORACLE_HOME=/u01/app/oracle/middleware
+[oracle@oem13 ~]$ export PATCH_HOME=/media/sf_D_DRIVE/patch_tmp
+[oracle@oem13 ~]$ $ORACLE_HOME/bin/emctl stop oms -all
+Oracle Enterprise Manager Cloud Control 13c Release 5  
+Copyright (c) 1996, 2021 Oracle Corporation.  All rights reserved.
+Stopping Oracle Management Server...
+WebTier Successfully Stopped
+Oracle Management Server Successfully Stopped
+AdminServer Successfully Stopped
+Oracle Management Server is Down
+JVMD Engine is Down
+[oracle@oem13 ~]$ $ORACLE_HOME/bin/emctl start oms -admin_only
+Oracle Enterprise Manager Cloud Control 13c Release 5  
+Copyright (c) 1996, 2021 Oracle Corporation.  All rights reserved.
+Starting Admin Server only...
+Admin Server Successfully Started 
+[oracle@oem13 ~]$ $ORACLE_HOME/OPatch/opatch rollback -analyze -id 36925662
+Oracle Interim Patch Installer version 13.9.4.2.18
+Copyright (c) 2025, Oracle Corporation.  All rights reserved.
+
+
+Oracle Home       : /u01/app/oracle/middleware
+Central Inventory : /u01/app/oraInventory
+   from           : /u01/app/oracle/middleware/oraInst.loc
+OPatch version    : 13.9.4.2.18
+OUI version       : 13.9.4.0.0
+Log file location : /u01/app/oracle/middleware/cfgtoollogs/opatch/opatch2025-06-16_15-00-25PM_1.log
+
+
+OPatch detects the Middleware Home as "/u01/app/oracle/middleware"
+
+
+Patches will be rolled back in the following order: 
+   36925662
+The following patch(es) will be rolled back: 36925662  
+
+Rolling back patch 36925662...
+
+RollbackSession rolling back interim patch '36925662' from OH '/u01/app/oracle/middleware'
+Users request no RAC file generation.  Do not create MP files.
+
+Skip patching component oracle.network.rsf, 19.0.0.0.0 and its actions.
+The actions are reported here, but are not performed.
+
+RollbackSession skipping inventory update.
+Log file location: /u01/app/oracle/middleware/cfgtoollogs/opatch/opatch2025-06-16_15-00-25PM_1.log
+
+OPatch succeeded.
+[oracle@oem13 ~]$ $ORACLE_HOME/OPatch/opatch rollback -id 36925662 -silent
+Oracle Interim Patch Installer version 13.9.4.2.18
+Copyright (c) 2025, Oracle Corporation.  All rights reserved.
+
+
+Oracle Home       : /u01/app/oracle/middleware
+Central Inventory : /u01/app/oraInventory
+   from           : /u01/app/oracle/middleware/oraInst.loc
+OPatch version    : 13.9.4.2.18
+OUI version       : 13.9.4.0.0
+Log file location : /u01/app/oracle/middleware/cfgtoollogs/opatch/opatch2025-06-16_15-04-41PM_1.log
+
+
+OPatch detects the Middleware Home as "/u01/app/oracle/middleware"
+
+
+Patches will be rolled back in the following order: 
+   36925662
+The following patch(es) will be rolled back: 36925662  
+
+Rolling back patch 36925662...
+
+RollbackSession rolling back interim patch '36925662' from OH '/u01/app/oracle/middleware'
+
+Patching component oracle.network.rsf, 19.0.0.0.0...
+RollbackSession removing interim patch '36925662' from inventory
+Log file location: /u01/app/oracle/middleware/cfgtoollogs/opatch/opatch2025-06-16_15-04-41PM_1.log
+
+OPatch succeeded.
+[oracle@oem13 ~]$ $ORACLE_HOME/OMSPatcher/omspatcher apply -analyze /media/sf_D_DRIVE/patch_tmp/37878436 -spb_patch -property_file /tmp/patch/property.file -silent
+
+SUCCESS :: The minimum Release Update (RU) check passed for applying the given holistic patch. Minimum OMS RU Version is 13.5.0.26
+
+JDK update log location :: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/SPB_PATCH/jdk_update_Mon_Jun_16_15_11_11_2025.log
+
+SPB JDK version :: 1.8.0.451,  Env JDK version :: 1.8.0.441
+
+The Env version is lower as compared to JDK included in patch :: JDK will be updated
+
+OPatch update log :: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/SPB_PATCH/opatch_update_Mon_Jun_16_15_11_13_2025.log
+
+The Env Opatch version :: 13.9.4.2.18
+
+The SPB Opatch version :: 13.9.4.2.19
+
+The Environment Opatch version is low as per OPatch included in Patch :: OPatch will be updated
+
+OMSPatcher analyze log file :: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/SPB_PATCH/omspatcher_analyze_Mon_Jun_16_15_11_17_2025.log
+
+Running Command :: /u01/app/oracle/middleware/OPatch/opatch lspatches -oh /u01/app/oracle/middleware
+
+Running Command :: /u01/app/oracle/middleware/OPatch/opatch prereq CheckForNoOpPatches -oh /u01/app/oracle/middleware -phbasefile /u01/app/oracle/middleware/linux64_patchlist.txt -silent
+
+
+Running Command :: /u01/app/oracle/middleware/OPatch/opatch prereq CheckConflictAgainstOH -oh /u01/app/oracle/middleware -phbasefile /u01/app/oracle/middleware/linux64_patchlist.txt -silent
+
+OMSPatcher succeeded.
+
+[oracle@oem13 37878436]$ $ORACLE_HOME/OMSPatcher/omspatcher apply /media/sf_D_DRIVE/patch_tmp/37878436 -spb_patch -property_file /tmp/patch/property.file -silent 
+
+SUCCESS :: The minimum Release Update (RU) check passed for applying the given holistic patch. Minimum OMS RU Version is 13.5.0.26
+OPatch Session completed with warnings.
+
+JDK update log location :: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/SPB_PATCH/jdk_update_Mon_Jun_16_21_34_59_2025.log
+
+SPB JDK version :: 1.8.0.451,  Env JDK version :: 1.8.0.451
+
+The Env JDK version is as per the supported JDK version expected by the SPB patch :: JDK will not be updated
+
+OPatch update log :: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/SPB_PATCH/opatch_update_Mon_Jun_16_21_35_01_2025.log
+
+The Env Opatch version :: 13.9.4.2.19
+
+The SPB Opatch version :: 13.9.4.2.19
+
+The Environment Opatch version is as per SPB Patch standards :: OPatch will not be updated
+
+OMSPatcher analyze log file :: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/SPB_PATCH/omspatcher_analyze_Mon_Jun_16_21_35_04_2025.log
+
+Running Command :: /u01/app/oracle/middleware/OPatch/opatch lspatches -oh /u01/app/oracle/middleware
+
+Running Command :: /u01/app/oracle/middleware/OPatch/opatch prereq CheckForNoOpPatches -oh /u01/app/oracle/middleware -phbasefile /u01/app/oracle/middleware/linux64_patchlist.txt -silent
+
+Running Command :: /u01/app/oracle/middleware/OPatch/opatch prereq CheckConflictAgainstOH -oh /u01/app/oracle/middleware -phbasefile /u01/app/oracle/middleware/linux64_patchlist.txt -silent
+
+OMSPatcher Automation Tool
+Copyright (c) 2017, Oracle Corporation.  All rights reserved.
+
+
+OMSPatcher version : 13.9.5.25.0
+OUI version        : 13.9.4.0.0
+Running from       : /u01/app/oracle/middleware
+Log file location  : /u01/app/oracle/middleware/cfgtoollogs/omspatcher/opatch2025-06-16_21-44-37PM_1.log
+
+OMSPatcher log file: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/SPB_PATCH/omspatcher_2025-06-16_21-44-37PM_apply.log
+
+
+Performing prerequisites.....
+
+The following sub-patches are already applied to the OMS system:
+
+37028738 37297691 37284722 37258699 37074199 36789759 36910011 36316422 35965629 34809489 34065178 
+
+
+The following sub-patches will be applied to the OMS system:
+
+1221425 37526122 37630310 37744340 37677581 36905789 37686229 37684007 37506516 37714186 37879311 
+
+
+Loaded SPB properties successfully
+
+Stopping the oms....
+
+Oracle Enterprise Manager Cloud Control 13c Release 5  
+Copyright (c) 1996, 2021 Oracle Corporation.  All rights reserved.
+Stopping Oracle Management Server...
+WebTier Successfully Stopped
+Oracle Management Server Successfully Stopped
+AdminServer Successfully Stopped
+Oracle Management Server is Down
+JVMD Engine is Down
+Running the command :: /u01/app/oracle/middleware/OPatch/opatch napply -oh /u01/app/oracle/middleware -phbasefile /u01/app/oracle/middleware/linux64_patchlist.txt -silent
+
+Log file to be checked to get the list of applied patches : /u01/app/oracle/middleware/cfgtoollogs/opatch/opatch2025-06-16_21-44-56PM_1.log
+
+Command ran successfully
+
+Starting the oms....
+
+Oracle Enterprise Manager Cloud Control 13c Release 5  
+Copyright (c) 1996, 2021 Oracle Corporation.  All rights reserved.
+Starting Oracle Management Server...
+WebTier Successfully Started
+Oracle Management Server Successfully Started
+Oracle Management Server is Up
+JVMD Engine is Up
+
+Log file location: /u01/app/oracle/middleware/cfgtoollogs/omspatcher/SPB_PATCH/omspatcher_2025-06-16_21-44-37PM_apply.log
+
+OMSPatcher succeeded.
+[oracle@oem13 37878436]$ $ORACLE_HOME/bin/emctl status oms -details
+Oracle Enterprise Manager Cloud Control 13c Release 5  
+Copyright (c) 1996, 2021 Oracle Corporation.  All rights reserved.
+Console Server Host        : oem13.localdomain
+HTTP Console Port          : 7788
+HTTPS Console Port         : 7802
+HTTP Upload Port           : 4889
+HTTPS Upload Port          : 4903
+EM Instance Home           : /u01/app/oracle/gc_inst/em/EMGC_OMS1
+OMS Log Directory Location : /u01/app/oracle/gc_inst/em/EMGC_OMS1/sysman/log
+OMS is not configured with SLB or virtual hostname
+Agent Upload is locked.
+OMS Console is locked.
+Active CA ID: 1
+Console URL: https://oem13.localdomain:7802/em
+Upload URL: https://oem13.localdomain:4903/empbs/upload
+
+WLS Domain Information
+Domain Name            : GCDomain
+Admin Server Host      : oem13.localdomain
+Admin Server HTTPS Port: 7102
+Admin Server is RUNNING
+
+Oracle Management Server Information
+Managed Server Instance Name: EMGC_OMS1
+Oracle Management Server Instance Host: oem13.localdomain
+WebTier is Up
+Oracle Management Server is Up
+JVMD Engine is Up
+[oracle@oem13 37878436]$ $ORACLE_HOME/OPatch/opatch lspatches 
+37879311;EM Stack Patch Bundle 13.5.0.0.0(ID:250425.230820) (Patch 37878436)
+37714186;WLS PATCH SET UPDATE 12.2.1.4.250317
+37684007;OWSM BUNDLE PATCH 12.2.1.4.250309
+37677581;OHS (NATIVE) DB19C BUNDLE PATCH 12.2.1.4.250307
+37630310;FMW Thirdparty Bundle Patch 12.2.1.4.250224
+37506516;RDA release 25.2-2025415 for OFM 12.2.1.4 SPB
+37028738;ADF BUNDLE PATCH 12.2.1.4.240905
+36925662;ORANJNI19.DLL AND LIBNJNI19.SO IS COREDUMPING AND CRASHING THE JVM IN WINDOWS AND AIX RESPECTIVELY
+1221425;Coherence Cumulative Patch 12.2.1.4.25
+37526122;DATABASE RELEASE UPDATE 19.26.0.0.0 FOR FMW DBCLIENT (37526122)
+37437919;Oracle Enterprise Manager for Exadata 13c Release 5 Plug-in Update 26 (13.5.1.26) for Oracle Management Service
+37437862;Oracle Enterprise Manager for Oracle Database 13c Release 5 Plug-in Update 26 (13.5.1.26) for Oracle Management Service
+37437845;Oracle Enterprise Manager 13c Release 5 Platform Update 26 (13.5.0.26) for Oracle Management Service
+37297691;OSS 19C BUNDLE PATCH 12.2.1.4.241119
+37284722;WebCenter Core Bundle Patch 12.2.1.4.241114
+37258699;JDBC19.25 BUNDLE PATCH 12.2.1.4.241107
+37051110;Oracle Enterprise Manager for Systems Infrastructure 13c Release 5 Plug-in Update 25 (13.5.1.25) for Oracle Management Service
+37051018;Oracle Enterprise Manager for Fusion Middleware 13c Release 5 Plug-in Update 25 (13.5.1.25) for Oracle Management Service
+37074199;Copy ldapjclnt19.jar into Instance home
+36789759;FMW PLATFORM BUNDLE PATCH 12.2.1.4.240812
+36910011;One-off
+36752903;Oracle Enterprise Manager for Cloud Framework 13c Release 5 Plug-in Update 24 (13.5.1.24) for Oracle Management Service
+36316422;OPSS Bundle Patch 12.2.1.4.240220
+35965629;ADR FOR WEBLOGIC SERVER 12.2.1.4.0 CPU JAN 2024
+34809489;One-off
+34430509;Oracle Enterprise Manager for Virtualization 13c Release 5 Plug-in Update 10 (13.5.1.10) for Oracle Management Service
+34065178;One-off
+33672721;fix for bug 33672721
+30152128;One-off
+
+OPatch succeeded.
+
+
+
+###AGENT####
+export ORACLE_HOME=/u01/app/oracle/agent/agent_13.5.0.0.0
+$ORACLE_HOME/OPatch/opatch lspatches
+
+Before:
+37297691;OSS 19C BUNDLE PATCH 12.2.1.4.241119
+37065576;Oracle Enterprise Manager for Oracle Home 13c Release 5 Plug-in Update 25 (13.5.0.25) for Oracle Management Agent
+37058838;Oracle Enterprise Manager for Oracle Database 13c Release 5 Plug-in Update 25 (13.5.1.25) for Oracle Management Agent
+37057652;Oracle Enterprise Manager 13c Release 5 Platform Update 25 (13.5.0.25) for Oracle Management Agent
+37087476;WLS PATCH SET UPDATE 12.2.1.4.240922
+36620434;Oracle Enterprise Manager for Fusion Middleware 13c Release 5 Plug-in Update 23 (13.5.1.23) for Oracle Management Agent (Discovery)
+36604010;Oracle Enterprise Manager for Exadata 13c Release 5 Plug-in Update 23 (13.5.1.23) for Oracle Management Agent (Discovery)
+36494123;Oracle Enterprise Manager for Fusion Middleware 13c Release 5 Plug-in Update 23 (13.5.1.23) for Oracle Management Agent
+36459164;MERGE REQUEST ON TOP OF 13.5.0.0.0 FOR BUGS 33565758 36015161
+36335380;Oracle Enterprise Manager for Oracle Database 13c Release 5 Plug-in Update 22 (13.5.1.22) for Oracle Management Agent (Discovery)
+36331137;System patch (New) Tracking bug to repackage consolidated UCP patch(ucp.jar from 19.17 + 19.17 version one-off patch(35360109) for the bug 35241630 + 19.17 version one-off patch(35525159 ) for the bug 30718769) as 13.5 EM Agent patch
+36296415;System patch(New) Tracking bug to repackage Consolidated JDBC patch (ojdbc8.jar from 19.17 + 19.17 version MLR patch for the bugs 32752229 35201760 ) as 13.5 EM Agent patch
+36173009;Oracle Enterprise Manager for EMREP 13c Release 5 Plug-in Update 21 (13.5.0.21) for Oracle Management Agent
+33737099;Oracle Enterprise Manager for Systems Infrastructure 13c Release 5 Plug-in Update 4 (13.5.1.4) for Oracle Management Agent (Discovery)
+32574981;
+32313251;
+32302527;
+
+After:
+
+
+############################
+####AgentPatcher patching### 
+############################
+export ORACLE_HOME=/u01/app/oracle/agent/agent_13.5.0.0.0
+export PATCH_HOME=/tmp/patch
+$ORACLE_HOME/AgentPatcher/agentpatcher version
+AgentPatcher Version: 13.9.5.10.0
+OPlan Version: 12.2.0.1.16
+OsysModel build: Tue Apr 28 18:16:31 PDT 2020
+
+AgentPatcher succeeded
+
+rm -fr $ORACLE_HOME/AgentPatcher
+unzip -oq /media/sf_D_DRIVE/OEM13.5/202506/p33355570_135000_Generic.zip -d $ORACLE_HOME
+$ORACLE_HOME/AgentPatcher/agentpatcher version
+
+AgentPatcher Version: 13.9.5.10.0
+OPlan Version: 12.2.0.1.16
+OsysModel build: Tue Apr 28 18:16:31 PDT 2020
+
+#############################
+####AGENT RU26 patching######
+#############################
+2) p37439438_135000_Generic.zip Patch 37439438: Oracle Enterprise Manager 13c Release 5 Update 26 ( 13.5.0.26 ) for Oracle Management Agent
+ 
+export ORACLE_HOME=/u01/app/oracle/agent/agent_13.5.0.0.0
+export PATCH_HOME=/tmp/patch
+unzip -oq /media/sf_D_DRIVE/OEM13.5/202506/p37439438_135000_Generic.zip  -d $PATCH_HOME
+cd $PATCH_HOME/37439438
+$ORACLE_HOME/AgentPatcher/agentpatcher apply -analyze
+$ORACLE_HOME/bin/emctl stop agent
+$ORACLE_HOME/AgentPatcher/agentpatcher apply -silent
+$ORACLE_HOME/OPatch/opatch lspatches
+
+###############################
+####patch JDK 1.8 Update 451###
+###############################
+3) p37643820_180451_Linux-x86-64.zip   Patch 37643820: Oracle JDK 8 Update 451 
+export ORACLE_HOME=/u01/app/oracle/agent/agent_13.5.0.0.0
+export JAVA_HOME=/u01/app/oracle/agent/agent_13.5.0.0.0/oracle_common/jdk
+export PATCH_HOME=/tmp/patch
+$ORACLE_HOME/bin/emctl stop agent
+$JAVA_HOME/bin/java -version
+cd $ORACLE_HOME/oracle_common/
+rm -fr jdk_bak
+mv jdk jdk_bak
+unzip -oq /media/sf_D_DRIVE/OEM13.5/202506/p37643820_180451_Linux-x86-64.zip -d $ORACLE_HOME/oracle_common/
+tar zxvf jdk-8u451-linux-x64.tar.gz  
+mv jdk1.8.0_451 jdk
+rm -fr readme.txt jdk-8u451-linux-x64.* 
+$JAVA_HOME/bin/java -version
+
+EM 13c: How to Upgrade OPatch to the Latest Version on the Enterprise Manager 13.4 or 13.5 Cloud Control OMS (Doc ID 2728285.1))
+4) p28186730_1394219_Generic.zip  Patch 28186730: OPATCH 13.9.4.2.19 FOR EM 13.5 AND FMW/WLS 12.2.1.4.0, 14.1.1.0.0, 14.1.2.0.0
+
+$ORACLE_HOME/OPatch/opatch version
+OPatch Version: 13.9.4.2.17
+
+unzip /media/sf_D_DRIVE/OEM13.5/202506/p28186730_1394219_Generic.zip -d $PATCH_HOME
+$ORACLE_HOME/oracle_common/jdk/bin/java -jar $PATCH_HOME/6880880/opatch_generic.jar -silent oracle_home=$ORACLE_HOME
+$ORACLE_HOME/OPatch/opatch version
+OPatch Version: 13.9.4.2.19
+
+5) p37714186_122140_Generic.zip Patch 37714186: WLS PATCH SET UPDATE 12.2.1.4.250317
+
+unzip -oq /media/sf_D_DRIVE/OEM13.5/202506/p37714186_122140_Generic.zip -d $PATCH_HOME
+cd $PATCH_HOME/37714186
+$ORACLE_HOME/OPatch/opatch apply -silent
+$ORACLE_HOME/bin/emctl start agent
+$ORACLE_HOME/OPatch/opatch lspatches
+7714186;WLS PATCH SET UPDATE 12.2.1.4.250317
+37731009;Oracle Enterprise Manager for Virtualization 13c Release 5 Plug-in Update 26 (13.5.1.26) for Oracle Management Agent (Discovery)
+37439460;Oracle Enterprise Manager for Oracle Database 13c Release 5 Plug-in Update 26 (13.5.1.26) for Oracle Management Agent
+37439447;Oracle Enterprise Manager 13c Release 5 Platform Update 26 (13.5.0.26) for Oracle Management Agent
+37297691;OSS 19C BUNDLE PATCH 12.2.1.4.241119
+37065576;Oracle Enterprise Manager for Oracle Home 13c Release 5 Plug-in Update 25 (13.5.0.25) for Oracle Management Agent
+36620434;Oracle Enterprise Manager for Fusion Middleware 13c Release 5 Plug-in Update 23 (13.5.1.23) for Oracle Management Agent (Discovery)
+36604010;Oracle Enterprise Manager for Exadata 13c Release 5 Plug-in Update 23 (13.5.1.23) for Oracle Management Agent (Discovery)
+36494123;Oracle Enterprise Manager for Fusion Middleware 13c Release 5 Plug-in Update 23 (13.5.1.23) for Oracle Management Agent
+36459164;MERGE REQUEST ON TOP OF 13.5.0.0.0 FOR BUGS 33565758 36015161
+36335380;Oracle Enterprise Manager for Oracle Database 13c Release 5 Plug-in Update 22 (13.5.1.22) for Oracle Management Agent (Discovery)
+36331137;System patch (New) Tracking bug to repackage consolidated UCP patch(ucp.jar from 19.17 + 19.17 version one-off patch(35360109) for the bug 35241630 + 19.17 version one-off patch(35525159 ) for the bug 30718769) as 13.5 EM Agent patch
+36296415;System patch(New) Tracking bug to repackage Consolidated JDBC patch (ojdbc8.jar from 19.17 + 19.17 version MLR patch for the bugs 32752229 35201760 ) as 13.5 EM Agent patch
+36173009;Oracle Enterprise Manager for EMREP 13c Release 5 Plug-in Update 21 (13.5.0.21) for Oracle Management Agent
+33737099;Oracle Enterprise Manager for Systems Infrastructure 13c Release 5 Plug-in Update 4 (13.5.1.4) for Oracle Management Agent (Discovery)
+32574981;
+32313251;
+32302527;
+
+
+################
+#####CLEANUP####
+################
+cd /tmp/patch
+rm -fr 3* 12* 6* PatchSearch.xml
+
+
+##make backup###
+######full oms backup
+/u01/app/oracle/middleware/bin/emctl exportconfig oms -dir /orabackup/oms_backup/
+/u01/app/oracle/middleware/bin/emctl stop oms -all
+/u01/app/oracle/agent/agent_13.5.0.0.0/bin/emctl stop agent
+emrep
+srvctl stop database -d emrep
+
+cd /u01/app/oracle/
+tar -czvf /orabackup/oms_backup/middleware_$(date +"%Y%m%d_%H-%M").tar.gz middleware
+tar -czvf /orabackup/oms_backup/swlib_$(date +"%Y%m%d_%H-%M").tar.gz swlib
+tar -czvf /orabackup/oms_backup/gc_inst_$(date +"%Y%m%d_%H-%M").tar.gz gc_inst
+tar -czvf /orabackup/oms_backup/agent_$(date +"%Y%m%d_%H-%M").tar.gz agent
+
+rman target /
+startup mount;
+backup as compressed backupset database format '/orabackup/oms_backup/emrep_full_%U';
+backup as compressed backupset current controlfile format '/orabackup/oms_backup/emrep_ctl_%U';
+shutdown immediate;
+
+
+srvctl start database -d emrep
+/u01/app/oracle/agent/agent_13.5.0.0.0/bin/emctl start agent
+/u01/app/oracle/middleware/bin/emctl start oms
+
+---cleanup
+df -h /u01
+export ORACLE_HOME=/u01/app/oracle/agent/agent_13.5.0.0.0
+$ORACLE_HOME/OPatch/opatch util DeleteInactivePatches -silent
+export ORACLE_HOME=/u01/app/oracle/middleware
+$ORACLE_HOME/OPatch/opatch util DeleteInactivePatches -silent
+df -h /u01
+
