@@ -1,6 +1,5 @@
 alter session set STATISTICS_LEVEL=ALL;
 query.sql
---comment
 SELECT * FROM   TABLE(DBMS_XPLAN.DISPLAY_CURSOR(format => 'ADVANCED RUNSTATS_LAST'));
 
 select dbms_stats.create_extended_stats('CTS_OWNER','WS_OPNL_LEG_ACYS','(NVL(SCH_ARR_TM_DEV,SCH_ARR_DTM_UTC))') from dual;
