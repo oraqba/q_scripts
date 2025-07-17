@@ -29,7 +29,6 @@
 --
 
 -- @rg_sqlprof1 '&&sql_id' &&child_no '&&category' '&force_matching'
-
 set serverout on format wrapped
 set feedback off
 set sqlblanklines on
