@@ -1,0 +1,29 @@
+##rlwrap install https://github.com/hanslub42/rlwrap/tree/master
+wget https://github.com/hanslub42/rlwrap/archive/refs/heads/master.zip
+unzip master.zip 
+cd rlwrap-master/
+./configure;
+ll
+make
+make check
+make install
+
+
+yum install autoconf
+yum install automake
+yum install gcc
+yum install ncurses-devel
+yum install readline-devel
+
+autoreconf --install
+./configure;
+
+yum provides *readline*
+make
+make check
+make install
+
+
+as oracle
+alias rlsqlplus='rlwrap sqlplus'
+alias rlrman='rlwrap rman'
